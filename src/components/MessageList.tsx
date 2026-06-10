@@ -104,7 +104,7 @@ export const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, o
               <div className="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center shrink-0 border border-outline-variant">
                 <span className="material-symbols-outlined text-primary text-sm">smart_toy</span>
               </div>
-              
+
               <div className="space-y-md flex-1">
                 {/* Text Bubble */}
                 <div className="bg-surface-container-lowest border border-outline-variant p-md rounded-xl rounded-tl-none shadow-sm">

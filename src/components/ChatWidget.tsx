@@ -19,17 +19,15 @@ export const ChatWidget: React.FC = () => {
       {/* Backdrop overlay (closes chat on click) */}
       <div
         onClick={toggleOpen}
-        className={`fixed inset-0 bg-on-background/20 backdrop-blur-sm z-40 transition-all duration-300 ${
-          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 bg-on-background/20 backdrop-blur-sm z-40 transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       />
 
       {/* Centered Chat Window Container */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-md pointer-events-none">
         <div
-          className={`chat-shadow bg-surface-container-lowest w-[380px] h-[600px] rounded-xl flex flex-col overflow-hidden border border-outline-variant transition-all duration-300 pointer-events-auto ${
-            isOpen ? 'scale-100 opacity-100' : 'scale-90 opacity-0 pointer-events-none'
-          }`}
+          className={`chat-shadow bg-surface-container-lowest w-[380px] h-[600px] rounded-xl flex flex-col overflow-hidden border border-outline-variant transition-all duration-300 pointer-events-auto ${isOpen ? 'scale-100 opacity-100' : 'scale-90 opacity-0 pointer-events-none'
+            }`}
         >
           {/* Header */}
           <div className="bg-primary p-md flex items-center justify-between text-on-primary select-none shrink-0">
