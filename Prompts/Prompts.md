@@ -80,3 +80,10 @@ Scope:
 [prd.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/prd.md) [kpi.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/kpi.md)  by refering this create one project scope document within that you need to ensure
 // functional + non-functional requirement //stopping point.// in scope development portion.
 by considering this create project_scope.md.
+
+Boundary:
+[kpi.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/kpi.md) [prd.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/prd.md) by refering this create project_boundary.md which consists the overall summary of my project with directory/folder structure, Project boundaries:
+1. Do not commit code yourself.
+2. Do not run any commands without asking me first.
+3. Do not write code unless you have full picture. If you have any questions, ask me first. Lets not waste tokens and build something we do not want.
+4. Only create maintainable modular code.
