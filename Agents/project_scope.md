@@ -13,7 +13,52 @@ FAQBot is a lightweight, embeddable, AI-powered chat widget designed for small e
 
 ---
 
-## 2. In-Scope Development (V1)
+## 2. Directory & Folder Structure
+
+```text
+FAQBot/
+├── Agents/                        # Project definition and scope documents
+│   ├── backend_persona.md         # Backend engineer role & tech stack
+│   ├── frontend_persona.md        # Frontend engineer role & tech stack
+│   ├── kpi.md                     # Key Performance Indicators & verification
+│   ├── prd.md                     # Product Requirements Document
+│   ├── project_boundary.md        # [THIS FILE] Project summary & boundary guidelines
+│   └── project_scope.md           # Scope boundaries & Definition of Done
+│
+├── Prompts/                       # Prompt guidelines and instructions
+│   ├── Problem.md                 # Core problem definition
+│   ├── Prompts.md                 # User instructions sequence
+│   └── save_token.md              # Token optimization guidelines (Vibe Coding)
+│
+├── api/                           # Backend serverless proxy functions
+│   └── chat.ts                    # POST /api/chat matching endpoint
+│
+├── public/                        # Static assets directory
+│   ├── faq.json                   # Static Q&A dataset (configured by owner)
+│   └── index.html                 # Dev testing host HTML page
+│
+├── src/                           # Frontend React source code
+│   ├── components/                # Modular UI components
+│   │   ├── ChatWidget.tsx         # Main sticky widget component
+│   │   ├── MessageList.tsx        # Message history thread
+│   │   └── MessageInput.tsx       # Text input field & validation
+│   ├── hooks/                     # Custom React hooks
+│   │   └── useChat.ts             # API request and state logic
+│   ├── styles/                    # Stylesheets
+│   │   └── index.css              # Custom Tailwind/Vanilla CSS configurations
+│   ├── App.tsx                    # Root React component
+│   ├── index.tsx                  # UMD entry point
+│   └── vite-env.d.ts              # TypeScript definitions
+│
+├── .env.example                   # Template for environment variables (OPENAI_API_KEY)
+├── package.json                   # Project scripts and dependencies
+├── tsconfig.json                  # TypeScript compiler settings
+└── vite.config.ts                 # Vite bundler configuration (UMD output)
+```
+
+---
+
+## 3. In-Scope Development (V1)
 
 The following components and features will be developed and delivered as part of the V1 scope:
 
@@ -59,7 +104,7 @@ The following components and features will be developed and delivered as part of
 
 ---
 
-## 3. Out of Scope (Explicitly Excluded from V1)
+## 4. Out of Scope (Explicitly Excluded from V1)
 
 To maintain a lightweight and maintainable structure, the following features are **explicitly out of scope** for the initial release:
 
