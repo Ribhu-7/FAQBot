@@ -64,11 +64,49 @@ export const useChat = () => {
         const localFaqsResponse = await fetch('/faq.json');
         const faqs = await localFaqsResponse.json();
         
-        // Find simple semantic/word-based match for simulation
-        const matchedFaq = faqs.find((f: { question: string }) => 
-          text.toLowerCase().includes(f.question.toLowerCase().split(' ').slice(-2).join(' ')) ||
-          f.question.toLowerCase().includes(text.toLowerCase())
-        );
+        // Find a robust keyword-overlap match for simulation (handling different word orders and word stems)
+        const cleanTokens = (str: string) => {
+          const stopWords = new Set([
+            'what', 'is', 'your', 'do', 'you', 'a', 'the', 'to', 'for', 'in', 'of', 'can', 'i', 
+            'how', 'are', 'on', 'with', 'at', 'my', 'or', 'and', 'about', 'please', 'any', 
+            'some', 'me', 'we', 'us', 'does', 'did', 'have', 'has', 'had', 'tell', 'info'
+          ]);
+          return str
+            .toLowerCase()
+            .replace(/[^\w\s]/g, '')
+            .split(/\s+/)
+            .filter(word => word.length > 1 && !stopWords.has(word));
+        };
+
+        const userTokens = cleanTokens(text);
+        let matchedFaq = null;
+        let highestScore = 0;
+
+        if (userTokens.length > 0) {
+          for (const faq of faqs) {
+            const faqTokens = cleanTokens(faq.question);
+            // Count overlapping tokens (supporting partial/stem matches, e.g. "returns" matches "return")
+            const overlap = userTokens.filter(ut => 
+              faqTokens.some(ft => ft.includes(ut) || ut.includes(ft))
+            ).length;
+
+            const score = overlap / Math.min(userTokens.length, faqTokens.length);
+
+            // We require at least 1 overlapping key word and a minimum score of 0.4
+            if (overlap >= 1 && score > highestScore && score >= 0.4) {
+              highestScore = score;
+              matchedFaq = faq;
+            }
+          }
+        }
+
+        // If no token match, fall back to simple substring match
+        if (!matchedFaq) {
+          matchedFaq = faqs.find((f: { question: string }) => 
+            f.question.toLowerCase().includes(text.toLowerCase()) ||
+            text.toLowerCase().includes(f.question.toLowerCase())
+          );
+        }
 
         const botMsg: Message = {
           id: `bot-${Date.now()}`,

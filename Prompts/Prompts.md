@@ -101,3 +101,7 @@ kindly add more questions in faq.json approx 20 questions
 
 # Test cases:
 [FAQBot](directory;file:///Users/neosoft/Documents/FAQBot) kindly create crisp test cases file for this project and also refer to the files and give test case status for each different metric
+
+## Optimization:
+can i implement something like if the user writes the question in a different order then also it should give the required response , if yes then please build it accordingly 
+ 
