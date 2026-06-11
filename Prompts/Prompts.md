@@ -34,7 +34,7 @@ Under each heading, include:
 ------------------
 
 PRD:
-#Role
+# Role
 You are a technical product manager specializing in AI-powered customer support tools for small e-commerce brands.
 #Task
 Write a Product Requirements Document (PRD) for the **FAQBot** application described below. The PRD must include the following sections:
@@ -67,37 +67,37 @@ Provide the output as a .md file with the exact seven headings listed above. Und
 -------------------
 
 
-Token optimizer:
+# Token optimizer:
 [save_token.md](file;file:///Users/neosoft/Documents/FAQBot/Prompts/save_token.md) kindly refer to this file and follow the process for this project
 
-KPI:
+# KPI:
 [prd.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/prd.md) refering to this file kindly make the kpi file in tabular format with this kpi tables columns 1. KPI Number
 2. KPI Name
 3. verification method
 4. status
 
-Scope:
+# Scope:
 [prd.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/prd.md) [kpi.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/kpi.md)  by refering this create one project scope document within that you need to ensure
 // functional + non-functional requirement //stopping point.// in scope development portion.
 by considering this create project_scope.md.
 
-Boundary:
+# Boundary:
 [kpi.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/kpi.md) [prd.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/prd.md) by refering this create project_boundary.md which consists the overall summary of my project,Project boundaries:
 1. Do not commit code yourself.
 2. Do not run any commands without asking me first.
 3. Do not write code unless you have full picture. If you have any questions, ask me first. Lets not waste tokens and build something we do not want.
 4. Only create maintainable modular code.
 
-Frontend:
+# Frontend:
 refer to [frontend_persona.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/frontend_persona.md) take Title: FAQBot Design System & Interface
 ID: projects/2534138631142238984  from stitch ui and make the ui accordingly
 
-Faq:
+# Faq:
 [prd.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/prd.md) [kpi.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/kpi.md) [project_scope.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/project_scope.md) [backend_persona.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/backend_persona.md) refer to this files and make faq.json
 kindly add more questions in faq.json approx 20 questions
 
-Development:
+# Development:
 [Agents](directory;file:///Users/neosoft/Documents/FAQBot/Agents) by refering all files in this folder just start the project .
 
-Test cases:
+# Test cases:
 [FAQBot](directory;file:///Users/neosoft/Documents/FAQBot) kindly create crisp test cases file for this project and also refer to the files and give test case status for each different metric
