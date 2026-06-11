@@ -98,3 +98,6 @@ kindly add more questions in faq.json approx 20 questions
 
 Development:
 [Agents](directory;file:///Users/neosoft/Documents/FAQBot/Agents) by refering all files in this folder just start the project .
+
+Test cases:
+[FAQBot](directory;file:///Users/neosoft/Documents/FAQBot) kindly create crisp test cases file for this project and also refer to the files and give test case status for each different metric
