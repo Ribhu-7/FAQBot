@@ -16,17 +16,10 @@ export const ChatWidget: React.FC = () => {
 
   return (
     <>
-      {/* Backdrop overlay (closes chat on click) */}
-      <div
-        onClick={toggleOpen}
-        className={`fixed inset-0 bg-on-background/20 backdrop-blur-sm z-40 transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-          }`}
-      />
-
-      {/* Centered Chat Window Container */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-md pointer-events-none">
+      {/* Full Screen Chat Window Container */}
+      <div className="fixed inset-0 z-50 flex pointer-events-none">
         <div
-          className={`chat-shadow bg-surface-container-lowest w-[380px] h-[600px] rounded-xl flex flex-col overflow-hidden border border-outline-variant transition-all duration-300 pointer-events-auto ${isOpen ? 'scale-100 opacity-100' : 'scale-90 opacity-0 pointer-events-none'
+          className={`bg-surface-container-lowest w-full h-full flex flex-col overflow-hidden transition-all duration-300 pointer-events-auto ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'
             }`}
         >
           {/* Header */}
@@ -58,26 +51,19 @@ export const ChatWidget: React.FC = () => {
           {/* Scrollable messages area */}
           <MessageList messages={messages} isLoading={isLoading} onSelectChip={selectChip} />
 
-          {/* Quick actions wrapper (render only if not loading) */}
-          {/* {!isLoading && (
-            <div className="py-sm bg-surface-container-low/20">
-              <QuickActionChips onSelectChip={selectChip} />
-            </div>
-          )} */}
-
           {/* Input box */}
           <MessageInput onSendMessage={sendMessage} isLoading={isLoading} />
         </div>
       </div>
 
       {/* Floating Launcher Button */}
-      <div className="fixed bottom-gutter right-gutter z-50">
+      <div className={`fixed bottom-gutter right-gutter z-50 transition-all duration-300 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}>
         <button
           onClick={toggleOpen}
           className="w-14 h-14 bg-primary text-on-primary rounded-full chat-shadow flex items-center justify-center hover:scale-110 active:scale-90 transition-all duration-300"
         >
           <span className="material-symbols-outlined text-3xl">
-            {isOpen ? 'close' : 'chat_bubble'}
+            chat_bubble
           </span>
         </button>
       </div>
