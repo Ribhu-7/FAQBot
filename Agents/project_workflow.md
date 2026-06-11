@@ -131,7 +131,7 @@ As a new developer, it is important to understand how key features are wired up:
   * Open/Close states are controlled by the `isOpen` variable. The transition uses standard CSS transitions:
     * **Open:** `translate-y-0 opacity-100`
     * **Closed:** `translate-y-4 opacity-0 pointer-events-none`
-  * The floating action launcher button is hidden when the chat widget is active (`isOpen ? 'scale-0 opacity-0' : 'scale-100'`) to ensure an immersive full-screen view.
+  * The floating action launcher button is hidden when the chat widget is active (`isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'`) to ensure an immersive full-screen view.
 
 ### B. Interactive Thumbs-Up / Thumbs-Down Toggles
 * **File Location:** [MessageList.tsx](FAQBot/src/components/MessageList.tsx)

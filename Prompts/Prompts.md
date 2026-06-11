@@ -104,4 +104,9 @@ kindly add more questions in faq.json approx 20 questions
 
 ## Optimization:
 can i implement something like if the user writes the question in a different order then also it should give the required response , if yes then please build it accordingly 
+
+## Enhancements:
+[FAQBot](directory;file:///Users/neosoft/Documents/FAQBot) refer to this project and tell me what more improvements and enhancements can be done 
  
+## Test Case check:
+ [project_test_cases.md](file;file:///Users/neosoft/Documents/FAQBot/Agents/project_test_cases.md) refer to this file and run all test cases , and update the status accordingly

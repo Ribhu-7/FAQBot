@@ -1,6 +1,5 @@
 import React from 'react';
 import { MessageList } from './MessageList';
-import { QuickActionChips } from './QuickActionChips';
 import { MessageInput } from './MessageInput';
 import { useChat } from '../hooks/useChat';
 

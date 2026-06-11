@@ -3,22 +3,40 @@ import { Message } from '../components/MessageList';
 
 const INITIAL_WELCOME = "Hello! I'm your FAQ Assistant. How can I help you today?";
 
-export const useChat = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(true); // Default open for demonstration
-
-  // Initialize with welcome message
-  useEffect(() => {
-    const defaultWelcome: Message = {
+// Helper function to read from sessionStorage during state initialization
+const getInitialMessages = (): Message[] => {
+  try {
+    const saved = sessionStorage.getItem('faqbot_messages');
+    if (saved) {
+      return JSON.parse(saved);
+    }
+  } catch (e) {
+    console.error('Error reading from sessionStorage:', e);
+  }
+  return [
+    {
       id: 'welcome',
       sender: 'bot',
       text: INITIAL_WELCOME,
       matched: true,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    };
-    setMessages([defaultWelcome]);
-  }, []);
+    }
+  ];
+};
+
+export const useChat = () => {
+  const [messages, setMessages] = useState<Message[]>(getInitialMessages);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(true); // Default open for demonstration
+
+  // Sync message state changes to sessionStorage
+  useEffect(() => {
+    try {
+      sessionStorage.setItem('faqbot_messages', JSON.stringify(messages));
+    } catch (e) {
+      console.error('Error writing to sessionStorage:', e);
+    }
+  }, [messages]);
 
   const sendMessage = async (text: string) => {
     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -86,8 +104,14 @@ export const useChat = () => {
           for (const faq of faqs) {
             const faqTokens = cleanTokens(faq.question);
             // Count overlapping tokens (supporting partial/stem matches, e.g. "returns" matches "return")
+            // Require exact match for short tokens (<= 3 chars) to avoid false positives (e.g. "it" in "capital")
             const overlap = userTokens.filter(ut => 
-              faqTokens.some(ft => ft.includes(ut) || ut.includes(ft))
+              faqTokens.some(ft => {
+                if (ut.length <= 3 || ft.length <= 3) {
+                  return ut === ft;
+                }
+                return ft.includes(ut) || ut.includes(ft);
+              })
             ).length;
 
             const score = overlap / Math.min(userTokens.length, faqTokens.length);
@@ -152,7 +176,7 @@ export const useChat = () => {
     }
   };
 
-  const toggleOpen = () => setIsOpen((prev) => !isOpen);
+  const toggleOpen = () => setIsOpen((prev) => !prev);
 
   return {
     messages,

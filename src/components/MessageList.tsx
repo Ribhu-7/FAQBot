@@ -132,27 +132,23 @@ export const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, o
                       <div className="flex gap-xs">
                         <button
                           onClick={() => handleThumbsUp(msg.id)}
-                          className={`p-xs rounded-lg border transition-all ${
-                            feedbackStates[msg.id] === 'up'
+                          className={`p-xs rounded-lg border transition-all ${feedbackStates[msg.id] === 'up'
                               ? 'bg-green-50 border-green-500 text-green-600'
                               : 'hover:bg-surface-container border-outline-variant text-on-surface-variant'
-                          }`}
+                            }`}
                         >
-                          <span className={`material-symbols-outlined text-sm ${
-                            feedbackStates[msg.id] === 'up' ? 'text-green-600' : 'text-on-surface-variant'
-                          }`}>thumb_up</span>
+                          <span className={`material-symbols-outlined text-sm ${feedbackStates[msg.id] === 'up' ? 'text-green-600' : 'text-on-surface-variant'
+                            }`}>thumb_up</span>
                         </button>
                         <button
                           onClick={() => handleThumbsDown(msg.id)}
-                          className={`p-xs rounded-lg border transition-all ${
-                            feedbackStates[msg.id] === 'down'
+                          className={`p-xs rounded-lg border transition-all ${feedbackStates[msg.id] === 'down'
                               ? 'bg-red-50 border-red-500 text-red-600'
                               : 'hover:bg-surface-container border-outline-variant text-on-surface-variant'
-                          }`}
+                            }`}
                         >
-                          <span className={`material-symbols-outlined text-sm ${
-                            feedbackStates[msg.id] === 'down' ? 'text-red-600' : 'text-on-surface-variant'
-                          }`}>thumb_down</span>
+                          <span className={`material-symbols-outlined text-sm ${feedbackStates[msg.id] === 'down' ? 'text-red-600' : 'text-on-surface-variant'
+                            }`}>thumb_down</span>
                         </button>
                       </div>
                     </div>
@@ -173,7 +169,7 @@ export const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, o
                       <span className="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
                     </a>
                     <button
-                      onClick={() => onSelectChip('Shipping Info')}
+                      onClick={() => onSelectChip('Customer Support')}
                       className="w-full flex items-center justify-between border border-outline-variant bg-surface hover:bg-surface-container transition-colors px-lg py-md rounded-xl font-label-md active:scale-[0.98]"
                     >
                       <span className="flex items-center gap-sm text-on-surface">

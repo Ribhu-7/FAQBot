@@ -18,6 +18,9 @@ const faqListSchema = z.array(faqItemSchema);
 // Initialize OpenAI client
 const openai = new OpenAI();
 
+// Global cache for warm-start serverless performance optimization
+let cachedFaqs: any = null;
+
 export default async function handler(req: any, res: any) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -34,43 +37,49 @@ export default async function handler(req: any, res: any) {
 
     const { question } = bodyValidation.data;
 
-    // 2. Load and validate faq.json from the public assets directory
-    let faqData: string;
-    try {
-      const faqPath = join(process.cwd(), 'public', 'faq.json');
-      faqData = await readFile(faqPath, 'utf-8');
-    } catch (err) {
-      console.error('Error reading faq.json:', err);
-      return res.status(500).json({
-        answer: "We couldn't find an answer to your question. Please contact us for help.",
-        matched: false,
-        error: 'FAQ list is missing or malformed'
-      });
-    }
+    // 2. Load and validate faq.json (utilize cache if available)
+    let faqs: any;
+    if (cachedFaqs) {
+      faqs = cachedFaqs;
+    } else {
+      let faqData: string;
+      try {
+        const faqPath = join(process.cwd(), 'public', 'faq.json');
+        faqData = await readFile(faqPath, 'utf-8');
+      } catch (err) {
+        console.error('Error reading faq.json:', err);
+        return res.status(500).json({
+          answer: "We couldn't find an answer to your question. Please contact us for help.",
+          matched: false,
+          error: 'FAQ list is missing or malformed'
+        });
+      }
 
-    let rawFaqs: any;
-    try {
-      rawFaqs = JSON.parse(faqData);
-    } catch (err) {
-      console.error('Error parsing faq.json:', err);
-      return res.status(500).json({
-        answer: "We couldn't find an answer to your question. Please contact us for help.",
-        matched: false,
-        error: 'FAQ JSON parsing failed'
-      });
-    }
+      let rawFaqs: any;
+      try {
+        rawFaqs = JSON.parse(faqData);
+      } catch (err) {
+        console.error('Error parsing faq.json:', err);
+        return res.status(500).json({
+          answer: "We couldn't find an answer to your question. Please contact us for help.",
+          matched: false,
+          error: 'FAQ JSON parsing failed'
+        });
+      }
 
-    const faqValidation = faqListSchema.safeParse(rawFaqs);
-    if (!faqValidation.success) {
-      console.error('FAQ Schema validation failed:', faqValidation.error);
-      return res.status(500).json({
-        answer: "We couldn't find an answer to your question. Please contact us for help.",
-        matched: false,
-        error: 'FAQ schema validation failed'
-      });
-    }
+      const faqValidation = faqListSchema.safeParse(rawFaqs);
+      if (!faqValidation.success) {
+        console.error('FAQ Schema validation failed:', faqValidation.error);
+        return res.status(500).json({
+          answer: "We couldn't find an answer to your question. Please contact us for help.",
+          matched: false,
+          error: 'FAQ schema validation failed'
+        });
+      }
 
-    const faqs = faqValidation.data;
+      faqs = faqValidation.data;
+      cachedFaqs = faqs; // Save to in-memory global cache
+    }
 
     // 3. Construct system prompt containing the FAQ context
     const systemPrompt = `You are a helpful customer support assistant for an e-commerce store.

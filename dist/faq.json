@@ -1,0 +1,82 @@
+[
+  {
+    "question": "What is your return policy?",
+    "answer": "Of course! We want you to love your purchase. Here is our structured return policy:\n\n* **30-Day Window:** Returns accepted within 30 days of delivery.\n* **Condition:** Items must be in original, unworn condition with tags.\n* **Free Returns:** We provide a prepaid shipping label for all domestic orders."
+  },
+  {
+    "question": "How long does shipping take?",
+    "answer": "Standard shipping takes 5–7 business days. Express shipping takes 2 business days. Tracking details will be emailed as soon as your package ships."
+  },
+  {
+    "question": "Do you ship internationally?",
+    "answer": "Yes, we ship to over 50 countries worldwide. International shipping fees and delivery times vary by destination and are calculated at checkout."
+  },
+  {
+    "question": "How can I track my order?",
+    "answer": "Once your order ships, we will email you a tracking number and link. You can track your shipment through that link or check your order status page."
+  },
+  {
+    "question": "Can I change or cancel my order?",
+    "answer": "Orders can be changed or cancelled within 1 hour of placement. Please email support@brand.com immediately with your order number to request changes."
+  },
+  {
+    "question": "What payment methods do you accept?",
+    "answer": "We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, Apple Pay, and Google Pay."
+  },
+  {
+    "question": "How do I contact customer support?",
+    "answer": "You can contact customer support via email at support@brand.com. Our support team is available Monday through Friday, 9 AM to 5 PM EST."
+  },
+  {
+    "question": "Are your products eco-friendly or organic?",
+    "answer": "Yes, all our products are made from 100% organic, certified eco-friendly materials and are sourced ethically from sustainable suppliers."
+  },
+  {
+    "question": "Do you offer gift wrapping or gift cards?",
+    "answer": "We offer digital gift cards starting at $10. We do not offer physical gift wrapping, but orders can be sent with a custom gift message."
+  },
+  {
+    "question": "What should I do if my order arrives damaged?",
+    "answer": "We are so sorry to hear that! Please email support@brand.com within 48 hours of delivery with photos of the damage, and we will issue a replacement."
+  },
+  {
+    "question": "Can I exchange an item instead of returning it?",
+    "answer": "Yes! Exchanges are free. Email support@brand.com with your order number and the size/item you wish to exchange it for, and we will set it up."
+  },
+  {
+    "question": "Do you have a physical retail store I can visit?",
+    "answer": "Currently, we operate exclusively online to keep our prices low and sustainable. We ship directly to your door from our local warehouse."
+  },
+  {
+    "question": "How do I apply a discount or promo code?",
+    "answer": "You can enter your discount code at checkout in the 'Promo Code' field. The discount will be applied immediately to your order total."
+  },
+  {
+    "question": "What happens if my package is lost in transit?",
+    "answer": "If your package shows no tracking updates for over 7 business days, please contact support@brand.com and we will file an investigation or reship your order."
+  },
+  {
+    "question": "Do you offer wholesale or bulk purchasing?",
+    "answer": "Yes! For wholesale or bulk orders (minimum 50 units), please contact wholesale@brand.com with your business details for pricing."
+  },
+  {
+    "question": "How do I care for and clean my products?",
+    "answer": "For best care, wash cold with similar colors, do not bleach, and tumble dry low. For delicate items, we recommend air drying."
+  },
+  {
+    "question": "Is my personal and credit card information secure?",
+    "answer": "Absolutely. Our website uses industry-standard 256-bit SSL encryption to protect your personal information, and all payments are processed securely."
+  },
+  {
+    "question": "Do you restock items that are sold out?",
+    "answer": "We restock popular items regularly. You can sign up for restock notifications directly on the product page to be alerted when it is back in stock."
+  },
+  {
+    "question": "Do you offer student or military discounts?",
+    "answer": "Yes, we offer a 10% discount to verified students and military members. Email support@brand.com with your student ID or verification to get your code."
+  },
+  {
+    "question": "How can I subscribe or unsubscribe from your newsletter?",
+    "answer": "You can subscribe at the bottom of our homepage. To unsubscribe, simply click the 'Unsubscribe' link at the bottom of any of our emails."
+  }
+]
