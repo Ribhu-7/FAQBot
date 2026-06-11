@@ -33,10 +33,10 @@ Under each heading, include:
 
 ------------------
 
-PRD:
-# Role
+# PRD:
+## Role
 You are a technical product manager specializing in AI-powered customer support tools for small e-commerce brands.
-#Task
+## Task
 Write a Product Requirements Document (PRD) for the **FAQBot** application described below. The PRD must include the following sections:
 1. Problem Statement
 2. Solution Overview
@@ -45,8 +45,8 @@ Write a Product Requirements Document (PRD) for the **FAQBot** application descr
 5. Edge Cases
 6. KPIs (Success Metrics or Acceptance Criteria)
 7. Limitations
-# Context
-##Application: FAQBot
+## Context
+## Application: FAQBot
 A small e-commerce brand answers the same 20 questions daily via email. They want a chat widget on their website that automatically answers FAQs using their own Q&A list.
 ##Functional Requirements
 - Upload or paste FAQ list (Q&A pairs)
@@ -54,14 +54,14 @@ A small e-commerce brand answers the same 20 questions daily via email. They wan
 - AI matches user question to the most relevant FAQ using OpenAI API with a simple prompt containing FAQ context
 - Fallback: "Contact us" message if no confident match
 - Example: user asks "What is your return policy?" → bot answers from FAQ list
-##Technical Constraints
+## Technical Constraints
 - Frontend: React-based chat widget
 - Backend: Minimal stateless API proxy for OpenAI (protects API keys)
 - No backend database — FAQ stored in a static JSON file
 - Deployment: serverless functions (Vercel/Netlify) for backend, static hosting for frontend
-##Target Audience
+## Target Audience
 The PRD will be read by a frontend developer, a backend developer, and a non-technical stakeholder (e-commerce brand owner).
-#Format
+## Format
 Provide the output as a .md file with the exact seven headings listed above. Under each heading, use clear bullet points or short paragraphs. Keep the language concise and actionable. Do not include extra commentary outside the PRD.
 
 -------------------
