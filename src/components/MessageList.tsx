@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export interface Message {
   id: string;
@@ -16,6 +16,21 @@ interface MessageListProps {
 
 export const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, onSelectChip }) => {
   const endRef = useRef<HTMLDivElement>(null);
+  const [feedbackStates, setFeedbackStates] = useState<Record<string, 'up' | 'down' | null>>({});
+
+  const handleThumbsUp = (msgId: string) => {
+    setFeedbackStates((prev) => ({
+      ...prev,
+      [msgId]: prev[msgId] === 'up' ? null : 'up',
+    }));
+  };
+
+  const handleThumbsDown = (msgId: string) => {
+    setFeedbackStates((prev) => ({
+      ...prev,
+      [msgId]: prev[msgId] === 'down' ? null : 'down',
+    }));
+  };
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -115,11 +130,29 @@ export const MessageList: React.FC<MessageListProps> = ({ messages, isLoading, o
                     <div className="mt-md pt-md border-t border-outline-variant flex items-center justify-between">
                       <span className="text-[12px] text-outline font-label-md">Was this helpful?</span>
                       <div className="flex gap-xs">
-                        <button className="p-xs hover:bg-surface-container rounded-lg border border-outline-variant transition-all">
-                          <span className="material-symbols-outlined text-sm text-on-surface-variant">thumb_up</span>
+                        <button
+                          onClick={() => handleThumbsUp(msg.id)}
+                          className={`p-xs rounded-lg border transition-all ${
+                            feedbackStates[msg.id] === 'up'
+                              ? 'bg-green-50 border-green-500 text-green-600'
+                              : 'hover:bg-surface-container border-outline-variant text-on-surface-variant'
+                          }`}
+                        >
+                          <span className={`material-symbols-outlined text-sm ${
+                            feedbackStates[msg.id] === 'up' ? 'text-green-600' : 'text-on-surface-variant'
+                          }`}>thumb_up</span>
                         </button>
-                        <button className="p-xs hover:bg-surface-container rounded-lg border border-outline-variant transition-all">
-                          <span className="material-symbols-outlined text-sm text-on-surface-variant">thumb_down</span>
+                        <button
+                          onClick={() => handleThumbsDown(msg.id)}
+                          className={`p-xs rounded-lg border transition-all ${
+                            feedbackStates[msg.id] === 'down'
+                              ? 'bg-red-50 border-red-500 text-red-600'
+                              : 'hover:bg-surface-container border-outline-variant text-on-surface-variant'
+                          }`}
+                        >
+                          <span className={`material-symbols-outlined text-sm ${
+                            feedbackStates[msg.id] === 'down' ? 'text-red-600' : 'text-on-surface-variant'
+                          }`}>thumb_down</span>
                         </button>
                       </div>
                     </div>
